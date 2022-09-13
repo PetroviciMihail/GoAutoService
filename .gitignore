@@ -10,6 +10,8 @@ npm-debug.*
 *.orig.*
 web-build/
 firebase.js
+AndroidManifest.xml
+
 # macOS
 .DS_Store
 
