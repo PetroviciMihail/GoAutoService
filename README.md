@@ -128,14 +128,19 @@ Pentru folosirea acestora am obținut si o cheie a API-ului pentru Google Maps p
       </MapView>
 ```
 
-O dată cu vizualizarea detaliilor unei cereri de preț putem vedea si ofertele și alegând una vedem detaliile despre service și putem alege un interval orar și o dată pentru a realiza o programare.
+O dată cu vizualizarea detaliilor unei cereri de preț putem vedea si ofertele.
+
+Alegând o ofertă utilizatorul vede detaliile despre service de unde poate alege o dată și o oră pentru a realiza o programare. Odată realizată programarea cerea de oferă nu va mai fi diponibilă pentru a mai primi oferte.
+
 ![image](https://user-images.githubusercontent.com/61497362/190016111-b6db2fd2-ea4c-4927-8123-4ed5b0d00863.png)
 
-Programările pot fi vizualizate pe ecranul "Appointments". De aici putem anula o rezervare, fapt ce face cererea de preț vizibila pentru alte service-uri pentru a oferta.
+Programările pot fi vizualizate pe ecranul "Appointments". De aici putem anula o rezervare, fapt ce face cererea de preț vizibila pentru alte service-uri pentru a oferta în continuare.
+
 ![image](https://user-images.githubusercontent.com/61497362/190016532-f011d2b4-6105-433a-9e5d-1fa0845673f8.png)
 
-După confirmarea lucrării de catre service-ul auto (din aplicația prezentată în https://github.com/PetroviciMihail/ServiceSide) intrarea va apărea in istoricul vehiculului, de unde clientul poate oferi și o evaluare service-ului.
+După confirmarea lucrării de catre service-ul auto (din aplicația prezentată în https://github.com/PetroviciMihail/ServiceSide) intrarea va apărea în istoricul vehiculului, de unde clientul poate oferi și o evaluare service-ului.
 
 Pe ecranul "My account" clientul își poate modifica câteva date despre cont și se poate deconecta.
 
+![image](https://user-images.githubusercontent.com/61497362/190021601-3c9871ad-9269-42ee-91a1-09215b05f69b.png)
 
