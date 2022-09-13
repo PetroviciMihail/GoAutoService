@@ -4,7 +4,7 @@ Această aplicație dorește să conecteze proprietarii de autovehicule cu servi
 
 Principala funcționalitate este că un client poate crea o cerere de preț iar service-urile din jur pot estima un preț pentru lucrare. Din ofertele primite de la ateliere, alegând un interval orar din programul service-ului clientul se pot programa singuri pentru a repara mașina.
 
-Pentru front-end-ul aplicației am folosit React Native și ca instrument de dezvoltare am folosit Expo.
+Pentru front-end-ul aplicației am folosit React Native și ca instrument de dezvoltare am folosit Expo. Aplicația este testată deocamdată doar pentru dispozitive Android.
 
 Pentru partea de back-end am folosit Firebase (Authentication, Firestore și Storage).
 
@@ -134,7 +134,8 @@ O dată cu vizualizarea detaliilor unei cereri de preț putem vedea si ofertele 
 Programările pot fi vizualizate pe ecranul "Appointments". De aici putem anula o rezervare, fapt ce face cererea de preț vizibila pentru alte service-uri pentru a oferta.
 ![image](https://user-images.githubusercontent.com/61497362/190016532-f011d2b4-6105-433a-9e5d-1fa0845673f8.png)
 
-După confirmarea lucrării de catre service-ul auto intrarea va apărea in istoricul vehiculului, de unde clientul poate oferi și o evaluare service-ului.
+După confirmarea lucrării de catre service-ul auto (din aplicația prezentată în https://github.com/PetroviciMihail/ServiceSide) intrarea va apărea in istoricul vehiculului, de unde clientul poate oferi și o evaluare service-ului.
+
 Pe ecranul "My account" clientul își poate modifica câteva date despre cont și se poate deconecta.
 
 
