@@ -4,7 +4,9 @@ Această aplicație dorește să conecteze proprietarii de autovehicule cu servi
 
 Principala funcționalitate este că un client poate crea o cerere de preț iar service-urile din jur pot estima un preț pentru lucrare. Din ofertele primite de la ateliere, alegând un interval orar din programul service-ului clientul se pot programa singuri pentru a repara mașina.
 
-Pentru front-end-ul aplicației am folosit React Native iar pentru partea de back-end, pentru stocarea datelor am folosit Firebase Firestore, pentru stocarea imaginilor m-am folosit de Firebase Storage iar pentru autentificare și creare conturilor am utilizat Firebase Authentication.
+Pentru front-end-ul aplicației am folosit React Native și ca instrument de dezvoltare am folosit Expo.
+
+Pentru partea de back-end am folosit Firebase (Authentication, Firestore și Storage).
 
 Acesta este Repository-ul aplicației pentru clienți. 
 Repository-ul aplicației pentru service-urile auto împreună cu prezentarea acesteia: https://github.com/PetroviciMihail/ServiceSide
@@ -12,26 +14,78 @@ Repository-ul aplicației pentru service-urile auto împreună cu prezentarea ac
 Link-ul de unde poate fi descarcată aplicația pentru clienți: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40petrovicivasile/GoAutoService-c0af57a54eb240558ad4184c1f943017-signed.apk
 Link-ul de unde poate fi descarcată aplicația pentru service-uri auto: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40petrovicivasile/ServiceSide-9e4c31d2f75f41e182d9a2a830e0c808-signed.apk
 
-Prezentarea Ecranelor și a funcționalitățiilor aplicației pentru clienți
+Prezentarea Ecranelor și a funcționalitățiilor aplicației pentru clienți:
 
-Ecranul de înregistrare și creare a unui cont nou
-Contul este creat prin Authentication, și validarea autenficării la fel. Validarea campurilor se face folosing formik si yup.
+--- Ecranul de înregistrare și creare a unui cont nou
+
+Contul este creat cu ajutorul Authentication, și verificarea autenficării la fel. Validarea campurilor se face folosing formik si yup.
+
 ![image](https://user-images.githubusercontent.com/61497362/190011546-5248c95b-9851-46d0-9faa-17deb99ec6c7.png)
 
 Folosind un BottomTabNavigator din @react-navigation/bottom-tabs in partea de jos sunt disponibile 4 ecrane la intrarea în aplicație.
 
-Primul pas pentru a putea folosi aplicația este adăugarea unui vehicul.
-Mașinile adăugate apar pe ecranul "My Cars", de aici apăsând pe una din mașini putem vedea detali despre acestea.
+--- Primul pas pentru a putea folosi aplicația este adăugarea unui vehicul.
+Mașinile adăugate apar pe ecranul "My Cars". Aici apăsând pe una din mașinile din listă putem vedea detali despre acestea.
+
 ![image](https://user-images.githubusercontent.com/61497362/190013548-f0e110d9-943e-45b2-bb72-e6ef95d95224.png)
 
 Pentru fiecare mașina putem vedea și istoricul lucrarilor si câteva statistici.
+
 ![image](https://user-images.githubusercontent.com/61497362/190013675-a91ee0ae-755f-4fed-8898-bce41daca13d.png)
 
-Pentru crearea unei cereri noi de preț putem face astea de pe ecranul "My requests". Dupa crearea acestora, ele vor fi afișate într-o listă de unde putem afla care dintre ele au primit oferte și printr-un swipe stânga le putem sterge.
+--- Pentru crearea unei cereri noi de preț putem face astea de pe ecranul "My requests". Dupa crearea acestora, ele vor fi afișate într-o listă de unde putem afla care dintre ele au primit oferte și printr-un swipe stânga le putem și șterge.
+
 ![image](https://user-images.githubusercontent.com/61497362/190015494-d0e0bdf5-d3dc-49c4-8bb5-e19b0612cc38.png)
 
-Obținerea locației se face fie prin oferirea accesului aplicației la locația dispozitivului, fie prin initializarea pinului în centrul Bucureștiului, de unde utilizatorul îl poate muta manual.
+Schema de validare Yup și formul de creare a unei cereri:
 
+```
+const validationSchema = Yup.object().shape({
+  car: Yup.object().nullable().required().label("Car"),
+  description: Yup.string().label("Description"),
+  category: Yup.string().required().label("Category"),
+  images: Yup.array(),
+});
+
+<AppForm
+        initialValues={{
+          category: "",
+          car: null,
+          images: [],
+          description: "",
+        }}
+        onSubmit={handleSubmit}
+        validationSchema={validationSchema}
+      >
+        <FormImagePicker name="images" />
+        <AppPicker
+          items={categories}
+          name="category"
+          PickerItemComponent={PickerItem}
+          placeholder="Category"
+          width="70%"
+        />
+        <CarPicker
+          items={cars}
+          name="car"
+          PickerItemComponent={PickerItem}
+          placeholder="Select a car"
+          width="70%"
+        />
+        <AppFormField
+          maxLength={255}
+          multiline
+          name="description"
+          numberOfLines={3}
+          placeholder="Description"
+        />
+
+        <SubmitButton title="Create" backgroundcolor="secondary" />
+      </AppForm>
+ ```
+
+Obținerea locației se face fie prin oferirea accesului aplicației la locația dispozitivului, fie prin initializarea pinului în centrul Bucureștiului, de unde utilizatorul îl poate muta manual.
+```
 const [coordsX, setCoordsX] = useState(26.10401); //longitude
 const [coordsY, setCoordsY] = useState(44.42946); //latitude
   
@@ -45,7 +99,31 @@ const [coordsY, setCoordsY] = useState(44.42946); //latitude
     setCoordsX(longitude);
     setCoordsY(latitude);
   };
+```
 
+Afișarea MapView-ului cu Makerul inițializat anterior
+
+Pentru folosirea acestora am obținut si o cheie a API-ului pentru Google Maps pe care am adăugat-o în AndroidManifest.xml 
+```
+<MapView
+        style={styles.map}
+        initialRegion={{
+          latitude: coordsY,
+          longitude: coordsX,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+      >
+        <Marker
+          draggable
+          coordinate={{ latitude: coordsY, longitude: coordsX }}
+          onDragEnd={(e) => {
+            setCoordsX(parseFloat(e.nativeEvent.coordinate.longitude));
+            setCoordsY(parseFloat(e.nativeEvent.coordinate.latitude));
+          }}
+        />
+      </MapView>
+```
 
 O dată cu vizualizarea detaliilor unei cereri de preț putem vedea si ofertele și alegând una vedem detaliile despre service și putem alege un interval orar și o dată pentru a realiza o programare.
 ![image](https://user-images.githubusercontent.com/61497362/190016111-b6db2fd2-ea4c-4927-8123-4ed5b0d00863.png)
