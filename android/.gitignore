@@ -10,7 +10,7 @@ build/
 local.properties
 *.iml
 *.hprof
-
+AndroidManifest.xml
 # BUCK
 buck-out/
 \.buckd/
