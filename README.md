@@ -87,6 +87,8 @@ const validationSchema = Yup.object().shape({
 
 Obținerea locației se face fie prin oferirea accesului aplicației la locația dispozitivului, fie prin initializarea pinului în centrul Bucureștiului, de unde utilizatorul îl poate muta manual.
 ```
+import * as Location from "expo-location";
+
 const [coordsX, setCoordsX] = useState(26.10401); //longitude
 const [coordsY, setCoordsY] = useState(44.42946); //latitude
   
