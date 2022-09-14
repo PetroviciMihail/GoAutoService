@@ -32,7 +32,8 @@ Mașinile adăugate apar pe ecranul "My Cars". Aici apăsând pe una din mașini
 
 Pentru fiecare mașina putem vedea și istoricul lucrarilor si câteva statistici.
 
-![image](https://user-images.githubusercontent.com/61497362/190013675-a91ee0ae-755f-4fed-8898-bce41daca13d.png)
+![image](https://user-images.githubusercontent.com/61497362/190094717-fcdcf5d0-7144-43ed-bf0f-7ed247d8ebcd.png)
+
 
 --- Pentru crearea unei cereri noi de preț putem face astea de pe ecranul "My requests". Dupa crearea acestora, ele vor fi afișate într-o listă de unde putem afla care dintre ele au primit oferte și printr-un swipe stânga le putem și șterge.
 
