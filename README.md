@@ -11,9 +11,9 @@ Pentru partea de back-end am folosit Firebase (Authentication, Firestore și Sto
 Acesta este Repository-ul aplicației pentru clienți. 
 Repository-ul aplicației pentru service-urile auto împreună cu prezentarea acesteia: https://github.com/PetroviciMihail/ServiceSide
 
-Link-ul de unde poate fi descarcată aplicația pentru clienți: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40petrovicivasile/GoAutoService-c0af57a54eb240558ad4184c1f943017-signed.apk
+Link-ul de unde poate fi descarcată aplicația pentru clienți: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40petrovicivasile/GoAutoService-e2f8985ddb18470282658b849d0af6f1-signed.apk
 
-Link-ul de unde poate fi descarcată aplicația pentru service-uri auto: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40petrovicivasile/ServiceSide-9e4c31d2f75f41e182d9a2a830e0c808-signed.apk
+Link-ul de unde poate fi descarcată aplicația pentru service-uri auto: https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40petrovicivasile/ServiceSide-40251ad5e1254286819273ce9d1a9041-signed.apk
 
 Prezentarea Ecranelor și a funcționalitățiilor aplicației pentru clienți:
 
